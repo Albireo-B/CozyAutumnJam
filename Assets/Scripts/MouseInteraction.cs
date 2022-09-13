@@ -7,6 +7,7 @@ public class MouseInteraction : MonoBehaviour
 
     private GameObject selectedObject;
     private Vector3 offset;
+    private Vector3 initalObjectPosition;
 
     // Update is called once per frame
     void Update()
@@ -16,9 +17,10 @@ public class MouseInteraction : MonoBehaviour
         {
             Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
 
-            if (targetObject)
+            if (targetObject && targetObject.transform.gameObject.tag == "Ingredient")
             {
                 selectedObject = targetObject.transform.gameObject;
+                initalObjectPosition = targetObject.transform.position;
                 offset = selectedObject.transform.position - mousePosition;
             }
         }
@@ -30,7 +32,14 @@ public class MouseInteraction : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0) && selectedObject)
         {
-            selectedObject = null;
+            Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
+            if (targetObject && targetObject.transform.gameObject.tag == "Cauldron"){
+                GetComponent<Cauldron>().Add(selectedObject.name);
+                selectedObject = null;
+            } else {
+                selectedObject.transform.position = initalObjectPosition;
+                selectedObject = null;
+            }
         }
     }
 }
