@@ -14,9 +14,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - ArmoireGauche
+  - MidGround
+  - AmoirFond
   - 
   - 
   - 
@@ -43,4 +43,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 1893008725
+    locked: 0
+  - name: ArmoirFond
+    uniqueID: 1818751747
+    locked: 0
+  - name: MidGround
+    uniqueID: 80124157
+    locked: 0
+  - name: ArmoirGauche
+    uniqueID: 3320242067
+    locked: 0
+  - name: Foreground
+    uniqueID: 2091368599
     locked: 0
