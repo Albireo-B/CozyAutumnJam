@@ -6,10 +6,12 @@ public class Cauldron : MonoBehaviour
 {
     private IngredientMap ingredientMap; 
 
+    private List<string> ingredientList;
+
     // Start is called before the first frame update
     void Start()
     {
-        ingredientMap = new IngredientMap();
+        ingredientList = new List<string>();
     }
 
     // Update is called once per frame
@@ -18,8 +20,12 @@ public class Cauldron : MonoBehaviour
         
     }
 
-    public void Add(string ingredientName){
-
-
+    public bool Add(string ingredientName){
+        if (!ingredientList.Contains(ingredientName)){
+            ingredientList.Add(ingredientName);
+            //if list size = 3 then mix !
+            return true;
+        }
+        return false;
     }
 }

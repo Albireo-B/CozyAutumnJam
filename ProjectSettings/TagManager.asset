@@ -17,8 +17,8 @@ TagManager:
   - ArmoireGauche
   - MidGround
   - AmoirFond
-  - 
-  - 
+  - Cauldron
+  - Ingredient
   - 
   - 
   - 
@@ -58,4 +58,10 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 2091368599
+    locked: 0
+  - name: Ingredient
+    uniqueID: 3671267919
+    locked: 0
+  - name: Cauldron
+    uniqueID: 3298607505
     locked: 0
