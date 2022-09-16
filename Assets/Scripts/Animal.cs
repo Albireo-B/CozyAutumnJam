@@ -7,15 +7,12 @@ public class Animal : MonoBehaviour
     [SerializeField]
     private List<GameObject> ingredientsNeeded;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public List<string> GetIngredientsNeeded() {
+        List<string> ingredientNamesList = new List<string>();
+        foreach (var ingredient in ingredientsNeeded)
+        {
+            ingredientNamesList.Add(ingredient.name);
+        }
+        return ingredientNamesList;
     }
 }

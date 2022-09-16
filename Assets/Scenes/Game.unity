@@ -429,6 +429,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &118484796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4594415760280046354, guid: ae82d2f13d6504e48898932fb97bada0, type: 3}
+  m_PrefabInstance: {fileID: 710889826}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &166543502
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,6 +880,11 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &404151230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5881307703323164099, guid: acb3615b7db46f4409ed085b5c4e8651, type: 3}
+  m_PrefabInstance: {fileID: 1413049572}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &431590819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,6 +1390,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LOIS
       objectReference: {fileID: 0}
+    - target: {fileID: 4594415760280046354, guid: ae82d2f13d6504e48898932fb97bada0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae82d2f13d6504e48898932fb97bada0, type: 3}
 --- !u!4 &710889827 stripped
@@ -1397,6 +1411,10 @@ PrefabInstance:
     - target: {fileID: 8613696075181871748, guid: 2432d6a4e1704d4479f4ae334c273059, type: 3}
       propertyPath: m_Name
       value: QUENTIN
+      objectReference: {fileID: 0}
+    - target: {fileID: 8613696075181871748, guid: 2432d6a4e1704d4479f4ae334c273059, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8970357264843629670, guid: 2432d6a4e1704d4479f4ae334c273059, type: 3}
       propertyPath: m_RootOrder
@@ -2541,6 +2559,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0164e8591433c534cb4806025766b809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animalList:
+  - {fileID: 404151230}
+  - {fileID: 118484796}
+  - {fileID: 1952649997}
 --- !u!224 &1325898022
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2738,6 +2760,10 @@ PrefabInstance:
     - target: {fileID: 5881307703323164099, guid: acb3615b7db46f4409ed085b5c4e8651, type: 3}
       propertyPath: m_Name
       value: GUILLAUME
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881307703323164099, guid: acb3615b7db46f4409ed085b5c4e8651, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6515152459875568417, guid: acb3615b7db46f4409ed085b5c4e8651, type: 3}
       propertyPath: m_RootOrder
@@ -3854,6 +3880,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1952649997 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8613696075181871748, guid: 2432d6a4e1704d4479f4ae334c273059, type: 3}
+  m_PrefabInstance: {fileID: 724148296}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1959525704
 GameObject:
   m_ObjectHideFlags: 0
