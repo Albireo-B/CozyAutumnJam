@@ -7,6 +7,7 @@ TagManager:
   - Ingredient
   - Cauldron
   - Animal
+  - Codex
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - MidGround
   - AmoirFond
   - Cauldron
-  - Ingredient
+  - Interactable
   - 
   - 
   - 
@@ -64,4 +65,7 @@ TagManager:
     locked: 0
   - name: Cauldron
     uniqueID: 3298607505
+    locked: 0
+  - name: Codex
+    uniqueID: 644779029
     locked: 0

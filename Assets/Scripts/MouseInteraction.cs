@@ -22,15 +22,24 @@ public class MouseInteraction : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             //We check if we are in contact with an ingredient collider on their layer
-            LayerMask ingredientsLayer = (1<<10);
-            Collider2D targetObject = Physics2D.OverlapPoint(mousePosition, ingredientsLayer);
+            LayerMask interactableLayer = (1<<10);
+            Collider2D targetObject = Physics2D.OverlapPoint(mousePosition, interactableLayer);
             //If we have clicked on an ingredient, we save its initial position for later and we set it as the selected object
             if (targetObject)
             {
                 selectedObject = targetObject.transform.gameObject;
-                initalObjectPosition = targetObject.transform.position;
-                offset = selectedObject.transform.position - mousePosition;
-            }
+                //If we clicked on an ingredient we save its position and mouse offset
+                if (selectedObject.tag == "Ingredient"){
+                    if (GetComponent<Codex>().CodexOpen())
+                        GetComponent<Codex>().OpenOrCloseCodex();
+                    initalObjectPosition = targetObject.transform.position;
+                    offset = selectedObject.transform.position - mousePosition;
+                //If we clicked on the codex, we open or close it and reset the selectedObject
+                } else if (selectedObject.tag == "Codex"){
+                    GetComponent<Codex>().OpenOrCloseCodex();
+                    selectedObject = null;
+                }
+            } 
         }
 
         //If we have an ingredient selected we make it follow the mouse position
