@@ -57,10 +57,7 @@ public class MouseInteraction : MonoBehaviour
             //ingredient to its initial position
             if (targetObject){
                 //If the cauldron doesn't already have this ingredient it adds it to its mix
-                if (cauldron.Add(selectedObject.name)){
-                    Debug.Log("Ingredient " + selectedObject.name + " added to the Cauldron !");
-                    //Play animation for ingredient added
-                }
+                cauldron.Add(selectedObject);
                 selectedObject.transform.position = initalObjectPosition;
                 selectedObject = null;
             } else {
@@ -69,4 +66,5 @@ public class MouseInteraction : MonoBehaviour
             }
         }
     }
+
 }
