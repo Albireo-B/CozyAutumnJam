@@ -71,6 +71,7 @@ public class Cauldron : MonoBehaviour
             Debug.Log("Animal already here !");
         } else {
             animalToSpawn.SetActive(true);
+            GetComponent<Codex>().CheckAnimal(animalToSpawn.name);
         }
     }
 

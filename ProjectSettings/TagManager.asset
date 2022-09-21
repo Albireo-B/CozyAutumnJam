@@ -8,6 +8,7 @@ TagManager:
   - Cauldron
   - Animal
   - Codex
+  - CodexAnimal
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - AmoirFond
   - Cauldron
   - Interactable
-  - 
+  - CodexAnimal
   - 
   - 
   - 
