@@ -30,14 +30,25 @@ public class MouseInteraction : MonoBehaviour
                 selectedObject = targetObject.transform.gameObject;
                 //If we clicked on an ingredient we save its position and mouse offset
                 if (selectedObject.tag == "Ingredient"){
-                    if (GetComponent<Codex>().CodexOpen())
-                        GetComponent<Codex>().OpenOrCloseCodex();
                     initalObjectPosition = targetObject.transform.position;
                     offset = selectedObject.transform.position - mousePosition;
                 //If we clicked on the codex, we open or close it and reset the selectedObject
                 } else if (selectedObject.tag == "Codex"){
                     GetComponent<Codex>().OpenOrCloseCodex();
                     selectedObject = null;
+                } else if (selectedObject.tag == "MainMenu"){
+                        Debug.Log("Go to main menu");//TODO GO TO MAIN MENU 
+                        selectedObject = null;
+                }else if (selectedObject.tag == "Serpent"){
+                    selectedObject = GetComponent<Cauldron>().GetMueSerpent();
+                    selectedObject.SetActive(true);
+                    initalObjectPosition = selectedObject.transform.position;
+                    offset = selectedObject.transform.position - mousePosition;
+                } else if (selectedObject.tag == "Diablotin"){
+                    selectedObject = GetComponent<Cauldron>().GetChocolate();
+                    selectedObject.SetActive(true);
+                    initalObjectPosition = selectedObject.transform.position;
+                    offset = selectedObject.transform.position - mousePosition;
                 }
             } 
         }
@@ -45,6 +56,8 @@ public class MouseInteraction : MonoBehaviour
         //If we have an ingredient selected we make it follow the mouse position
         if (selectedObject)
         {
+            if (GetComponent<Codex>().CodexOpen())
+                GetComponent<Codex>().OpenOrCloseCodex();
             selectedObject.transform.position = mousePosition;
         }
 
@@ -53,6 +66,10 @@ public class MouseInteraction : MonoBehaviour
         {
             LayerMask cauldronLayer = (1<<9);
             Collider2D targetObject = Physics2D.OverlapPoint(mousePosition, cauldronLayer);
+            
+            if (selectedObject.name == "MueSerpent" || selectedObject.name == "Chocolate")
+                selectedObject.SetActive(false);
+                
             //If we are overlapping with the cauldron, we add the ingredient to its script, and we move back the 
             //ingredient to its initial position
             if (targetObject){
@@ -64,6 +81,7 @@ public class MouseInteraction : MonoBehaviour
                 selectedObject.transform.position = initalObjectPosition;
                 selectedObject = null;
             }
+
         }
     }
 

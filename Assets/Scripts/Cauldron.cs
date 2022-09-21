@@ -11,6 +11,8 @@ public class Cauldron : MonoBehaviour
     private GameObject mueSerpent;
     [SerializeField]
     private GameObject sporeChampignoul;
+    [SerializeField]
+    private GameObject chocolate;
 
 
     private List<GameObject> ingredientList;
@@ -80,11 +82,9 @@ public class Cauldron : MonoBehaviour
         } else {
             animalToSpawn.SetActive(true);
             GetComponent<Codex>().CheckAnimal(animalToSpawn.name);
-            //If the spawning animal is the serpent or the champignoul, we spawn the ingredient linked
+            //If the spawning animal is the champignoul, we spawn the ingredient linked
             if (animalToSpawn.name == "Champignoul")
                 sporeChampignoul.SetActive(true);
-            else if (animalToSpawn.name == "Serpent")
-                mueSerpent.SetActive(true);
         }
     }
 
@@ -92,8 +92,17 @@ public class Cauldron : MonoBehaviour
     private void ResetIngredientsUsed(){
         foreach (var ingredient in ingredientList)
         {
-            ingredient.SetActive(true);
+            if (ingredient.name != "MueSerpent")
+                ingredient.SetActive(true);
         }
         ingredientList.Clear();
+    }
+
+    public GameObject GetMueSerpent(){
+        return mueSerpent;
+    }
+
+    public GameObject GetChocolate(){
+        return chocolate;
     }
 }

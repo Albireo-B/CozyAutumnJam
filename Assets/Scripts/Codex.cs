@@ -21,7 +21,9 @@ public class Codex : MonoBehaviour
             Collider2D targetObject = Physics2D.OverlapPoint(mousePosition, interactableLayer);
             //If the mouse is hovering a codex animal
             if (targetObject){
-                DisplayAnimalInfos(targetObject.transform.gameObject);
+                GameObject selectedObject = targetObject.transform.gameObject;
+                if (selectedObject.tag == "CodexAnimal")
+                    DisplayAnimalInfos(targetObject.transform.gameObject);
             }
         }
     }
