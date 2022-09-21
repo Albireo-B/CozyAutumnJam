@@ -7,23 +7,28 @@ public class Cauldron : MonoBehaviour
     [SerializeField]
     private List<GameObject> animalList; 
 
-    private List<string> ingredientList;
+    [SerializeField]
+    private GameObject mueSerpent;
+    [SerializeField]
+    private GameObject sporeChampignoul;
+    [SerializeField]
+    private GameObject chocolate;
+
+
+    private List<GameObject> ingredientList;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        ingredientList = new List<string>();
+        ingredientList = new List<GameObject>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public bool Add(string ingredientName){
-        if (!ingredientList.Contains(ingredientName)){
-            ingredientList.Add(ingredientName);
+    public bool Add(GameObject ingredient){
+        if (!ingredientList.Contains(ingredient)){
+            ingredient.SetActive(false);
+            ingredientList.Add(ingredient);
             //TODO ADD "ADD" ANIMATION
             //If we have 3 ingredients in the cauldron we create the mix 
             if (ingredientList.Count == 3){
@@ -38,9 +43,15 @@ public class Cauldron : MonoBehaviour
 
         //TODO ADD MIX ANIMATION
         GameObject animalMix = null;
+        List<string> ingredientsListNames = new List<string>();
+        foreach (var ingredient in ingredientList)
+        {
+            ingredientsListNames.Add(ingredient.name);
+        }
+
         foreach (var animal in animalList)
         {
-            if (CompareLists(animal.GetComponent<Animal>().GetIngredientsNeeded(),ingredientList)){
+            if (CompareLists(animal.GetComponent<Animal>().GetIngredientsNeeded(), ingredientsListNames)){
                 animalMix = animal;
                 break;
             }
@@ -51,7 +62,7 @@ public class Cauldron : MonoBehaviour
             Debug.Log("Not a correct mix !");
             //TODO CREATE "EMPTY MIX" ANIMATION
         }
-        ingredientList.Clear();
+        ResetIngredientsUsed();
     }
 
     private bool CompareLists(List<string> animalIngredients, List<string> cauldronIngredients){
@@ -70,6 +81,28 @@ public class Cauldron : MonoBehaviour
             Debug.Log("Animal already here !");
         } else {
             animalToSpawn.SetActive(true);
+            GetComponent<Codex>().CheckAnimal(animalToSpawn.name);
+            //If the spawning animal is the champignoul, we spawn the ingredient linked
+            if (animalToSpawn.name == "Champignoul")
+                sporeChampignoul.SetActive(true);
         }
+    }
+
+    
+    private void ResetIngredientsUsed(){
+        foreach (var ingredient in ingredientList)
+        {
+            if (ingredient.name != "MueSerpent")
+                ingredient.SetActive(true);
+        }
+        ingredientList.Clear();
+    }
+
+    public GameObject GetMueSerpent(){
+        return mueSerpent;
+    }
+
+    public GameObject GetChocolate(){
+        return chocolate;
     }
 }

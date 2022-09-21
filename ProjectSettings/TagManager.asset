@@ -8,6 +8,10 @@ TagManager:
   - Cauldron
   - Animal
   - Codex
+  - CodexAnimal
+  - Serpent
+  - Diablotin
+  - MainMenu
   layers:
   - Default
   - TransparentFX
@@ -20,8 +24,8 @@ TagManager:
   - AmoirFond
   - Cauldron
   - Interactable
-  - 
-  - 
+  - CodexAnimal
+  - ClickableAnimal
   - 
   - 
   - 
