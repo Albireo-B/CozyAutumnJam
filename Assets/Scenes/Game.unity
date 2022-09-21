@@ -884,6 +884,11 @@ Transform:
   m_Father: {fileID: 762847971}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &267158826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4703944716122055848, guid: 636e005966d5f9b49a2ec2abcfb94cd9, type: 3}
+  m_PrefabInstance: {fileID: 1729406077}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &342368612
 GameObject:
   m_ObjectHideFlags: 0
@@ -2665,9 +2670,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1818751747
-  m_SortingLayer: 2
-  m_SortingOrder: 7
+  m_SortingLayerID: -623699377
+  m_SortingLayer: 6
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 38e7a1fa720bd1f46a3564c65ddeba32, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2790,6 +2795,11 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &1147979161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6743768110803985152, guid: 1494d726efbd49843a5963a450c958cd, type: 3}
+  m_PrefabInstance: {fileID: 1802031221}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1149101929
 GameObject:
   m_ObjectHideFlags: 0
@@ -3365,6 +3375,8 @@ MonoBehaviour:
   - {fileID: 1478624013}
   - {fileID: 2003092373}
   - {fileID: 825668301}
+  mueSerpent: {fileID: 1147979161}
+  sporeChampignoul: {fileID: 267158826}
 --- !u!114 &1312913791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4313,6 +4325,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SporesChampignon
       objectReference: {fileID: 0}
+    - target: {fileID: 4703944716122055848, guid: 636e005966d5f9b49a2ec2abcfb94cd9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8508345219445568813, guid: 636e005966d5f9b49a2ec2abcfb94cd9, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -4596,6 +4612,10 @@ PrefabInstance:
     - target: {fileID: 6743768110803985152, guid: 1494d726efbd49843a5963a450c958cd, type: 3}
       propertyPath: m_Name
       value: MueSerpent
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743768110803985152, guid: 1494d726efbd49843a5963a450c958cd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7692956801953821317, guid: 1494d726efbd49843a5963a450c958cd, type: 3}
       propertyPath: m_RootOrder

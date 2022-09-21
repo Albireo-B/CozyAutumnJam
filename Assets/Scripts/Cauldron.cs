@@ -7,7 +7,15 @@ public class Cauldron : MonoBehaviour
     [SerializeField]
     private List<GameObject> animalList; 
 
+    [SerializeField]
+    private GameObject mueSerpent;
+    [SerializeField]
+    private GameObject sporeChampignoul;
+
+
     private List<GameObject> ingredientList;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +80,11 @@ public class Cauldron : MonoBehaviour
         } else {
             animalToSpawn.SetActive(true);
             GetComponent<Codex>().CheckAnimal(animalToSpawn.name);
+            //If the spawning animal is the serpent or the champignoul, we spawn the ingredient linked
+            if (animalToSpawn.name == "Champignoul")
+                sporeChampignoul.SetActive(true);
+            else if (animalToSpawn.name == "Serpent")
+                mueSerpent.SetActive(true);
         }
     }
 
