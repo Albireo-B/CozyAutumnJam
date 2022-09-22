@@ -101,8 +101,8 @@ public class MouseInteraction : MonoBehaviour
         }
     }
 
-    public void DisableIngredientsInteractions(){
-        ingredientsDisabled = true;
+    public void DisableIngredientsInteractions(bool disable){
+        ingredientsDisabled = disable;
     }
 
     public void EndGame(){

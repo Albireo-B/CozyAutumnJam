@@ -38,11 +38,14 @@ public class Codex : MonoBehaviour
     //We open or close the corresponding codex depending if its visible/active
     public void OpenOrCloseCodex() {
         if (openedCodex.activeSelf){
+            if (!GetComponent<Cauldron>().GetDiablotinSpawned())
+                GetComponent<MouseInteraction>().DisableIngredientsInteractions(false);
             if (infoDisplay)
                 infoDisplay.SetActive(false);
             openedCodex.SetActive(false);
             closedCodex.SetActive(true);
         } else if (closedCodex.activeSelf) {
+            GetComponent<MouseInteraction>().DisableIngredientsInteractions(true);
             closedCodex.SetActive(false);
             openedCodex.SetActive(true);
         }

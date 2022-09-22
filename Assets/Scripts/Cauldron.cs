@@ -18,11 +18,12 @@ public class Cauldron : MonoBehaviour
 
     private List<GameObject> ingredientList;
     private GameObject chocolateColor;
-
+    private bool diablotinSpawned;
 
     // Start is called before the first frame update
     void Start()
     {
+        diablotinSpawned = false;
         ingredientList = new List<GameObject>();
     }
 
@@ -90,8 +91,10 @@ public class Cauldron : MonoBehaviour
             //If the spawning animal is the champignoul, we spawn the ingredient linked
             if (animalToSpawn.name == "Champignoul")
                 sporeChampignoul.SetActive(true);
-            else if (animalToSpawn.name == "Diablotin")
-                GetComponent<MouseInteraction>().DisableIngredientsInteractions();
+            else if (animalToSpawn.name == "Diablotin"){
+                diablotinSpawned = true;
+                GetComponent<MouseInteraction>().DisableIngredientsInteractions(true);
+            }
         }
     }
 
@@ -112,6 +115,9 @@ public class Cauldron : MonoBehaviour
     }
 
 
+    public bool GetDiablotinSpawned(){
+        return diablotinSpawned;
+    }
 
     public GameObject GetMueSerpent(){
         return mueSerpent;
