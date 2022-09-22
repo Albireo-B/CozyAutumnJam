@@ -317,15 +317,15 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: H:\Perso\GameJam\CozyAutumnJam
+  m_LastProjectPath: E:\Programmes\CozyAutumnJam
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
