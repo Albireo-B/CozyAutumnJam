@@ -6,13 +6,20 @@ public class MouseInteraction : MonoBehaviour
 {
     [SerializeField] int objectLatence;
 
+    [SerializeField]
+    private GameObject character;
+
     private GameObject selectedObject;
     private Vector3 offset;
     private Vector3 initalObjectPosition;
     private Cauldron cauldron;
     private Queue<Vector3> latenceQueue= new Queue<Vector3>();
+    private bool ingredientsDisabled;
+    private bool gameEnded;
 
     void Start() {
+        ingredientsDisabled = false;
+        gameEnded = false;
         cauldron = GetComponent<Cauldron>();
     }
 
@@ -29,28 +36,32 @@ public class MouseInteraction : MonoBehaviour
             //If we have clicked on an ingredient, we save its initial position for later and we set it as the selected object
             if (targetObject)
             {
-                selectedObject = targetObject.transform.gameObject;
-                //If we clicked on an ingredient we save its position and mouse offset
-                if (selectedObject.tag == "Ingredient"){
-                    initalObjectPosition = targetObject.transform.position;
-                    offset = selectedObject.transform.position - mousePosition;
+                if (!ingredientsDisabled){
+                    
+                    selectedObject = targetObject.transform.gameObject;
+                    //If we clicked on an ingredient we save its position and mouse offset
+                    if (selectedObject.tag == "Ingredient"){
+                        initalObjectPosition = targetObject.transform.position;
+                        offset = selectedObject.transform.position - mousePosition;
+                    } else if (selectedObject.tag == "Serpent"){
+                        selectedObject = GetComponent<Cauldron>().GetMueSerpent();
+                        selectedObject.SetActive(true);
+                        initalObjectPosition = selectedObject.transform.position;
+                        offset = selectedObject.transform.position - mousePosition;
+                    } 
+                }
                 //If we clicked on the codex, we open or close it and reset the selectedObject
-                } else if (selectedObject.tag == "Codex"){
+                if (targetObject.transform.gameObject.tag == "Codex"){
                     GetComponent<Codex>().OpenOrCloseCodex();
                     selectedObject = null;
-                } else if (selectedObject.tag == "MainMenu"){
+                } else if (targetObject.transform.gameObject.tag == "MainMenu"){
                         Debug.Log("Go to main menu");//TODO GO TO MAIN MENU 
                         selectedObject = null;
-                }else if (selectedObject.tag == "Serpent"){
-                    selectedObject = GetComponent<Cauldron>().GetMueSerpent();
-                    selectedObject.SetActive(true);
-                    initalObjectPosition = selectedObject.transform.position;
-                    offset = selectedObject.transform.position - mousePosition;
-                } else if (selectedObject.tag == "Diablotin"){
-                    selectedObject = GetComponent<Cauldron>().GetChocolate();
-                    selectedObject.SetActive(true);
-                    initalObjectPosition = selectedObject.transform.position;
-                    offset = selectedObject.transform.position - mousePosition;
+                } else if (targetObject.transform.gameObject.tag == "Diablotin" && !gameEnded){
+                        selectedObject = GetComponent<Cauldron>().GetChocolate();
+                        initalObjectPosition = selectedObject.transform.position;
+                        offset = selectedObject.transform.position - mousePosition;
+                        selectedObject.SetActive(true);
                 }
             } 
         }
@@ -77,7 +88,7 @@ public class MouseInteraction : MonoBehaviour
             
             if (selectedObject.name == "MueSerpent" || selectedObject.name == "Chocolate")
                 selectedObject.SetActive(false);
-                
+
             //If we are overlapping with the cauldron, we add the ingredient to its script, and we move back the 
             //ingredient to its initial position
             if (targetObject){
@@ -90,4 +101,15 @@ public class MouseInteraction : MonoBehaviour
         }
     }
 
+    public void DisableIngredientsInteractions(){
+        ingredientsDisabled = true;
+    }
+
+    public void EndGame(){
+        GetComponent<Cauldron>().DisplayChocolate("Chocolate");
+        character.transform.GetChild(0).gameObject.SetActive(false);
+        character.transform.GetChild(1).gameObject.SetActive(true);
+        gameEnded = true;
+
+    }
 }

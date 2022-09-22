@@ -13,10 +13,11 @@ public class Cauldron : MonoBehaviour
     private GameObject sporeChampignoul;
     [SerializeField]
     private GameObject chocolate;
-
+    [SerializeField]
+    private GameObject cholocateMixVariations;
 
     private List<GameObject> ingredientList;
-
+    private GameObject chocolateColor;
 
 
     // Start is called before the first frame update
@@ -29,6 +30,8 @@ public class Cauldron : MonoBehaviour
         if (!ingredientList.Contains(ingredient)){
             ingredient.SetActive(false);
             ingredientList.Add(ingredient);
+            if (ingredient.name == "Chocolate")
+                GetComponent<MouseInteraction>().EndGame();
             //TODO ADD "ADD" ANIMATION
             //If we have 3 ingredients in the cauldron we create the mix 
             if (ingredientList.Count == 3){
@@ -56,6 +59,7 @@ public class Cauldron : MonoBehaviour
                 break;
             }
         }
+
         if (animalMix){
             SpawnAnimal(animalMix);
         } else {
@@ -82,13 +86,22 @@ public class Cauldron : MonoBehaviour
         } else {
             animalToSpawn.SetActive(true);
             GetComponent<Codex>().CheckAnimal(animalToSpawn.name);
+            DisplayChocolate(animalToSpawn.name);
             //If the spawning animal is the champignoul, we spawn the ingredient linked
             if (animalToSpawn.name == "Champignoul")
                 sporeChampignoul.SetActive(true);
+            else if (animalToSpawn.name == "Diablotin")
+                GetComponent<MouseInteraction>().DisableIngredientsInteractions();
         }
     }
 
-    
+    public void DisplayChocolate(string animalName){
+        if (chocolateColor)
+            chocolateColor.SetActive(false);
+        chocolateColor = cholocateMixVariations.transform.Find(animalName).gameObject;
+        chocolateColor.SetActive(true);
+    }
+
     private void ResetIngredientsUsed(){
         foreach (var ingredient in ingredientList)
         {
@@ -97,6 +110,8 @@ public class Cauldron : MonoBehaviour
         }
         ingredientList.Clear();
     }
+
+
 
     public GameObject GetMueSerpent(){
         return mueSerpent;
