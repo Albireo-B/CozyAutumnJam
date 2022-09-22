@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9050565855686908664}
-  - component: {fileID: 9050565855686908671}
+  - component: {fileID: -2708214999142755070}
   m_Layer: 10
   m_Name: SporesChampignoul
   m_TagString: Ingredient
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9050565855686908665}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33,32 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &9050565855686908671
-BoxCollider2D:
+--- !u!65 &-2708214999142755070
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9050565855686908665}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.123057365, y: 1.2745253}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.4611492, y: 1.8262421}
-  m_EdgeRadius: 0
+  m_Size: {x: 171.74565, y: 126.15359, z: 1}
+  m_Center: {x: 14.313774, y: 31.357365, z: 0}
 --- !u!1 &9050565856346606757
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,7 +72,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9050565856346606757}
   m_LocalRotation: {x: -0, y: -0, z: -0.100386985, w: 0.9949485}
-  m_LocalPosition: {x: 0.01, y: 0.61, z: 1.92}
+  m_LocalPosition: {x: 0.01, y: 0.61, z: 0}
   m_LocalScale: {x: 5.630344, y: 5.6303434, z: 5.630344}
   m_ConstrainProportionsScale: 0
   m_Children: []

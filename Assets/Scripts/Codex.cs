@@ -14,16 +14,28 @@ public class Codex : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Transform targetObject = null;
+
+        //We check if we are in contact with an object collider on their layer
+        RaycastHit hit;
+        Vector3 hitPoint = Vector3.zero;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        LayerMask interactableLayer = (1 << 11);
+        if (Physics.Raycast(ray, out hit, 50000, interactableLayer))
+        {
+            targetObject = hit.transform;
+            hitPoint = hit.point;
+            hitPoint.z = 0;
+        }
+
 
         if (CodexOpen()){
-            LayerMask interactableLayer = (1<<11);
-            Collider2D targetObject = Physics2D.OverlapPoint(mousePosition, interactableLayer);
+        
             //If the mouse is hovering a codex animal
             if (targetObject){
-                GameObject selectedObject = targetObject.transform.gameObject;
+                GameObject selectedObject = targetObject.gameObject;
                 if (selectedObject.tag == "CodexAnimal")
-                    DisplayAnimalInfos(targetObject.transform.gameObject);
+                    DisplayAnimalInfos(selectedObject);
             }
         }
     }
