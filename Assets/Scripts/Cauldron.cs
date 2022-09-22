@@ -10,8 +10,6 @@ public class Cauldron : MonoBehaviour
     [SerializeField]
     private GameObject mueSerpent;
     [SerializeField]
-    private GameObject sporeChampignoul;
-    [SerializeField]
     private GameObject chocolate;
     [SerializeField]
     private GameObject cholocateMixVariations;
@@ -88,10 +86,8 @@ public class Cauldron : MonoBehaviour
             animalToSpawn.SetActive(true);
             GetComponent<Codex>().CheckAnimal(animalToSpawn.name);
             DisplayChocolate(animalToSpawn.name);
-            //If the spawning animal is the champignoul, we spawn the ingredient linked
-            if (animalToSpawn.name == "Champignoul")
-                sporeChampignoul.SetActive(true);
-            else if (animalToSpawn.name == "Diablotin"){
+            //If the spawning animal is the diablotin, we stop the ingredient mixing possibility
+            if (animalToSpawn.name == "Diablotin"){
                 diablotinSpawned = true;
                 GetComponent<MouseInteraction>().DisableIngredientsInteractions(true);
             }
