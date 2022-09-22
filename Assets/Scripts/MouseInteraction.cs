@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class MouseInteraction : MonoBehaviour
 {
+    [SerializeField] int objectLatence;
 
     private GameObject selectedObject;
     private Vector3 offset;
     private Vector3 initalObjectPosition;
     private Cauldron cauldron;
+    private Queue<Vector3> latenceQueue= new Queue<Vector3>();
 
     void Start() {
         cauldron = GetComponent<Cauldron>();
@@ -58,7 +60,13 @@ public class MouseInteraction : MonoBehaviour
         {
             if (GetComponent<Codex>().CodexOpen())
                 GetComponent<Codex>().OpenOrCloseCodex();
-            selectedObject.transform.position = mousePosition;
+            //we implemente a bit of latence
+            latenceQueue.Enqueue(mousePosition);
+            if (latenceQueue.Count >= objectLatence)
+            {
+
+                selectedObject.transform.position = latenceQueue.Dequeue();
+            }
         }
 
         //If we un-click and have a selected ingredient, we check if we are overlapping the cauldron collider
@@ -74,14 +82,11 @@ public class MouseInteraction : MonoBehaviour
             //ingredient to its initial position
             if (targetObject){
                 //If the cauldron doesn't already have this ingredient it adds it to its mix
-                cauldron.Add(selectedObject);
-                selectedObject.transform.position = initalObjectPosition;
-                selectedObject = null;
-            } else {
-                selectedObject.transform.position = initalObjectPosition;
-                selectedObject = null;
+                cauldron.Add(selectedObject);  
             }
-
+            selectedObject.transform.position = initalObjectPosition;
+            selectedObject = null;
+            latenceQueue.Clear();
         }
     }
 
