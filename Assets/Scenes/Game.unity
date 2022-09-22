@@ -1216,10 +1216,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!1 &383192173 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2831937177301036892, guid: 856af347c02f8104bb039318d65cd51c, type: 3}
-  m_PrefabInstance: {fileID: 2105672429}
 --- !u!114 &342368615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1295,6 +1291,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4251267894791745707, guid: 43eb7daf09ed6334ea868e0aba324bd6, type: 3}
   m_PrefabInstance: {fileID: 357829983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &383192173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2831937177301036892, guid: 856af347c02f8104bb039318d65cd51c, type: 3}
+  m_PrefabInstance: {fileID: 2105672429}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &395745655
 GameObject:
@@ -2982,13 +2983,15 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1301952293}
+  - {fileID: 357829984}
   - {fileID: 1178159945}
   - {fileID: 761858805}
-  - {fileID: 2141350446}
+  - {fileID: 2031743287}
   - {fileID: 1802031222}
   - {fileID: 1729406078}
   - {fileID: 2105672430}
+  - {fileID: 1301952293}
+  - {fileID: 2141350446}
   m_Father: {fileID: 762847971}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4347,6 +4350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7591e18bf21c00c498360dd212862921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectLatence: 0
 --- !u!114 &1312913790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5045,7 +5049,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5881307703323164099, guid: acb3615b7db46f4409ed085b5c4e8651, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6515152459875568417, guid: acb3615b7db46f4409ed085b5c4e8651, type: 3}
       propertyPath: m_RootOrder
@@ -5686,7 +5690,7 @@ Transform:
   - {fileID: 837988023}
   - {fileID: 886563967}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1729406077
 PrefabInstance:
@@ -6693,14 +6697,14 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -623699377
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
-  m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MinParticleSize: 0.01
+  m_MaxParticleSize: 54.93
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -6916,7 +6920,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 1, b: 0.8317747, a: 1}
+      maxColor: {r: 0, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -7441,7 +7445,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 1.15
       mode: 0
       spread: 0
       speed:
