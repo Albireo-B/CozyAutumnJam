@@ -38,7 +38,7 @@ public class MouseInteraction : MonoBehaviour
         {
             targetObject = hit.transform;
             hitPoint = hit.point;
-            hitPoint.z = 0;
+            hitPoint.z = targetObject.position.z;
         }
 
 
@@ -57,12 +57,17 @@ public class MouseInteraction : MonoBehaviour
                     if (selectedObject.tag == "Ingredient"){
                         initalObjectPosition = targetObject.transform.position;
                         offset = selectedObject.transform.position - hitPoint;
+                        // we disable his collider while we are dragging it
+                        selectedObject.GetComponent<BoxCollider>().enabled = false;
                     } else if (selectedObject.tag == "Serpent"){
                         selectedObject = GetComponent<Cauldron>().GetMueSerpent();
                         selectedObject.SetActive(true);
                         initalObjectPosition = selectedObject.transform.position;
                         offset = selectedObject.transform.position - hitPoint;
+                        // we disable his collider while we are dragging it
+                        selectedObject.GetComponent<BoxCollider>().enabled = false;
                     }
+
                 }
                 //If we clicked on the codex, we open or close it and reset the selectedObject
                 if (targetObject.transform.gameObject.tag == "Codex"){
@@ -97,6 +102,8 @@ public class MouseInteraction : MonoBehaviour
         //If we un-click and have a selected ingredient, we check if we are overlapping the cauldron collider
         if (Input.GetMouseButtonUp(0) && selectedObject)
         {
+            // we reenable his collider after we are dragging it
+            selectedObject.GetComponent<BoxCollider>().enabled = true;
             LayerMask cauldronLayer = (1<<9);
             Collider2D targetObject2 = Physics2D.OverlapPoint(hitPoint, cauldronLayer);
 
