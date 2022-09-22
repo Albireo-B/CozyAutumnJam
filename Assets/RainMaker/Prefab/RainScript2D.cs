@@ -70,11 +70,11 @@ namespace DigitalRuby.RainMaker
             }
             if (FollowCamera)
             {
-                p.transform.position = new Vector3(Camera.transform.position.x, visibleBounds.max.y + yOffset, p.transform.position.z);
+                p.transform.position = new Vector3(Camera.transform.position.x, visibleBounds.max.y + yOffset + 500f, p.transform.position.z);
             }
             else
             {
-                p.transform.position = new Vector3(p.transform.position.x, visibleBounds.max.y + yOffset, p.transform.position.z);
+                p.transform.position = new Vector3(p.transform.position.x, visibleBounds.max.y + yOffset + 500f, p.transform.position.z);
             }
             p.transform.localScale = new Vector3(visibleWorldWidth * RainWidthMultiplier, 1.0f, 1.0f);
             var m = p.main;
