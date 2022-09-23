@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MouseInteraction : MonoBehaviour
 {
@@ -74,8 +75,8 @@ public class MouseInteraction : MonoBehaviour
                     GetComponent<Codex>().OpenOrCloseCodex();
                     selectedObject = null;
                 } else if (targetObject.transform.gameObject.tag == "MainMenu"){
-                        Debug.Log("Go to main menu");//TODO GO TO MAIN MENU
-                        selectedObject = null;
+                    SceneManager.LoadScene(sceneName: "menu");
+                    selectedObject = null;
                 } else if (targetObject.transform.gameObject.tag == "Diablotin" && !gameEnded){
                         selectedObject = GetComponent<Cauldron>().GetChocolate();
                         initalObjectPosition = selectedObject.transform.position;
