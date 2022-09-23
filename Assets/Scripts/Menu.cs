@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    [SerializeField]    GameObject menu;
+    [SerializeField]    GameObject credits;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,18 @@ public class Menu : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void Credit()
+    {
+        credits.SetActive(true);
+        menu.SetActive(false);
+    }
+
+    public void Back()
+    {
+        menu.SetActive(true);
+        credits.SetActive(false);
     }
 
 }
