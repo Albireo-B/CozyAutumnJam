@@ -13,9 +13,12 @@ public class Cauldron : MonoBehaviour
     private GameObject chocolate;
     [SerializeField]
     private GameObject cholocateMixVariations;
+    [SerializeField]
+    private GameObject puffAnimation;
 
     [SerializeField] AudioSource plouf;
     [SerializeField] AudioSource wrong;
+    [SerializeField] AudioSource puff;
 
     private List<GameObject> ingredientList;
     private GameObject chocolateColor;
@@ -88,7 +91,11 @@ public class Cauldron : MonoBehaviour
             //TODO ADD ANIMATION OF ANIMAL ALREADY THERE
             Debug.Log("Animal already here !");
         } else {
+            
             animalToSpawn.SetActive(true);
+            GameObject tempPuffAnimation = Instantiate(puffAnimation, animalToSpawn.transform);
+            puff.PlayOneShot(puff.clip);
+            Destroy(tempPuffAnimation, 0.3f);
             GetComponent<Codex>().CheckAnimal(animalToSpawn.name);
             DisplayChocolate(animalToSpawn.name);
             //If the spawning animal is the diablotin, we stop the ingredient mixing possibility
