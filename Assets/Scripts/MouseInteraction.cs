@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MouseInteraction : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class MouseInteraction : MonoBehaviour
         {
             targetObject = hit.transform;
             hitPoint = hit.point;
-            hitPoint.z = 0;
+            hitPoint.z = targetObject.position.z;
         }
 
         if (!selectedObject){
@@ -72,20 +73,25 @@ public class MouseInteraction : MonoBehaviour
                     if (selectedObject.tag == "Ingredient"){
                         initalObjectPosition = targetObject.transform.position;
                         offset = selectedObject.transform.position - hitPoint;
+                        // we disable his collider while we are dragging it
+                        selectedObject.GetComponent<BoxCollider>().enabled = false;
                     } else if (selectedObject.tag == "Serpent"){
                         selectedObject = GetComponent<Cauldron>().GetMueSerpent();
                         selectedObject.SetActive(true);
                         initalObjectPosition = selectedObject.transform.position;
                         offset = selectedObject.transform.position - hitPoint;
+                        // we disable his collider while we are dragging it
+                        selectedObject.GetComponent<BoxCollider>().enabled = false;
                     }
+
                 }
                 //If we clicked on the codex, we open or close it and reset the selectedObject
                 if (targetObject.transform.gameObject.tag == "Codex"){
                     GetComponent<Codex>().OpenOrCloseCodex();
                     selectedObject = null;
                 } else if (targetObject.transform.gameObject.tag == "MainMenu"){
-                        Debug.Log("Go to main menu");//TODO GO TO MAIN MENU
-                        selectedObject = null;
+                    SceneManager.LoadScene(sceneName: "menu");
+                    selectedObject = null;
                 } else if (targetObject.transform.gameObject.tag == "Diablotin" && !gameEnded){
                         GetComponent<CursorManager>().ChangeCursor(CursorManager.CursorStyle.HOLD);
                         selectedObject = GetComponent<Cauldron>().GetChocolate();
@@ -113,6 +119,8 @@ public class MouseInteraction : MonoBehaviour
         //If we un-click and have a selected ingredient, we check if we are overlapping the cauldron collider
         if (Input.GetMouseButtonUp(0) && selectedObject)
         {
+            // we reenable his collider after we are dragging it
+            selectedObject.GetComponent<BoxCollider>().enabled = true;
             LayerMask cauldronLayer = (1<<9);
             Collider2D targetObject2 = Physics2D.OverlapPoint(hitPoint, cauldronLayer);
 
