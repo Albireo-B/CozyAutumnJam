@@ -18,6 +18,7 @@ public class Cauldron : MonoBehaviour
 
     [SerializeField] AudioSource plouf;
     [SerializeField] AudioSource wrong;
+    [SerializeField] AudioSource puff;
 
     private List<GameObject> ingredientList;
     private GameObject chocolateColor;
@@ -93,6 +94,7 @@ public class Cauldron : MonoBehaviour
             
             animalToSpawn.SetActive(true);
             GameObject tempPuffAnimation = Instantiate(puffAnimation, animalToSpawn.transform);
+            puff.PlayOneShot(puff.clip);
             Destroy(tempPuffAnimation, 0.3f);
             GetComponent<Codex>().CheckAnimal(animalToSpawn.name);
             DisplayChocolate(animalToSpawn.name);
