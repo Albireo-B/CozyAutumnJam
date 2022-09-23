@@ -2236,6 +2236,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1909767448}
     m_Modifications:
+    - target: {fileID: 2077108328104272322, guid: 1e7a14daf466cb846a468026eede57e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5925480386756876390, guid: 1e7a14daf466cb846a468026eede57e6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3454,7 +3458,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022322131}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -287, y: -144, z: 644.58826}
+  m_LocalPosition: {x: -287, y: -144, z: 441}
   m_LocalScale: {x: 54, y: 54, z: 54}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4747,6 +4751,7 @@ MonoBehaviour:
   mueSerpent: {fileID: 1147979161}
   chocolate: {fileID: 383192173}
   cholocateMixVariations: {fileID: 1712032591}
+  puffAnimation: {fileID: 8945519694966738577, guid: 10a048e4ccee500448ccd0823137e510, type: 3}
 --- !u!114 &1312913791
 MonoBehaviour:
   m_ObjectHideFlags: 0
