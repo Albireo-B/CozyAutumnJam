@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: CozyAutumnJam
+  companyName: Gravity Studio
+  productName: Magical Chocolate
   defaultCursor: {fileID: 2800000, guid: eb196e8e72a8fa642b6c40c97e649b8b, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
