@@ -8,6 +8,8 @@ public class Codex : MonoBehaviour
     private GameObject openedCodex;
     [SerializeField]
     private GameObject closedCodex;
+    [SerializeField]
+    private GameObject mainPage;
 
     private GameObject infoDisplay;
 
@@ -36,11 +38,16 @@ public class Codex : MonoBehaviour
                 GameObject selectedObject = targetObject.gameObject;
                 if (selectedObject.tag == "CodexAnimal")
                     DisplayAnimalInfos(selectedObject);
+            } else {
+                if (infoDisplay)
+                    infoDisplay.SetActive(false);
+                mainPage.SetActive(true);
             }
         }
     }
 
     private void DisplayAnimalInfos(GameObject animal){
+        mainPage.SetActive(false);
         if (infoDisplay)
             infoDisplay.SetActive(false);
         infoDisplay = animal.transform.GetChild(2).gameObject;
