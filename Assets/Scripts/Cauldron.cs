@@ -15,7 +15,7 @@ public class Cauldron : MonoBehaviour
     private GameObject cholocateMixVariations;
 
     [SerializeField] AudioSource plouf;
-
+    [SerializeField] AudioSource wrong;
 
     private List<GameObject> ingredientList;
     private GameObject chocolateColor;
@@ -68,6 +68,7 @@ public class Cauldron : MonoBehaviour
         } else {
             Debug.Log("Not a correct mix !");
             //TODO CREATE "EMPTY MIX" ANIMATION
+            wrong.PlayOneShot(wrong.clip);
         }
         ResetIngredientsUsed();
     }
