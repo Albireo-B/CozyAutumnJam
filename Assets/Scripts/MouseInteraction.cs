@@ -19,6 +19,7 @@ public class MouseInteraction : MonoBehaviour
     private bool gameEnded;
 
     void Start() {
+        GetComponent<CursorManager>().ChangeCursor(CursorManager.CursorStyle.BASE);
         ingredientsDisabled = false;
         gameEnded = false;
         cauldron = GetComponent<Cauldron>();
@@ -42,6 +43,20 @@ public class MouseInteraction : MonoBehaviour
             hitPoint.z = targetObject.position.z;
         }
 
+        if (!selectedObject){
+            if (targetObject && targetObject.gameObject.name != "RoomBG") {
+                if ((!ingredientsDisabled || targetObject.transform.gameObject.name == "Codex" 
+                || targetObject.transform.gameObject.name == "MainMenu"  || targetObject.transform.gameObject.name == "Diablotin" 
+                ) && !gameEnded){
+                    GetComponent<CursorManager>().ChangeCursor(CursorManager.CursorStyle.INTERACT);
+                } else 
+                    GetComponent<CursorManager>().ChangeCursor(CursorManager.CursorStyle.BASE);
+            } else {
+                GetComponent<CursorManager>().ChangeCursor(CursorManager.CursorStyle.BASE);
+            }
+        }
+
+        
 
         //If we click with the left-click
         if (Input.GetMouseButtonDown(0))
@@ -52,7 +67,7 @@ public class MouseInteraction : MonoBehaviour
             if (targetObject && targetObject.gameObject.name != "RoomBG")
             {
                 if (!ingredientsDisabled){
-
+                    GetComponent<CursorManager>().ChangeCursor(CursorManager.CursorStyle.HOLD);
                     selectedObject = targetObject.transform.gameObject;
                     //If we clicked on an ingredient we save its position and mouse offset
                     if (selectedObject.tag == "Ingredient"){
@@ -78,6 +93,7 @@ public class MouseInteraction : MonoBehaviour
                     SceneManager.LoadScene(sceneName: "menu");
                     selectedObject = null;
                 } else if (targetObject.transform.gameObject.tag == "Diablotin" && !gameEnded){
+                        GetComponent<CursorManager>().ChangeCursor(CursorManager.CursorStyle.HOLD);
                         selectedObject = GetComponent<Cauldron>().GetChocolate();
                         initalObjectPosition = selectedObject.transform.position;
                         offset = selectedObject.transform.position - hitPoint;
@@ -120,6 +136,7 @@ public class MouseInteraction : MonoBehaviour
             selectedObject.transform.position = initalObjectPosition;
             selectedObject = null;
             latenceQueue.Clear();
+            GetComponent<CursorManager>().ChangeCursor(CursorManager.CursorStyle.BASE);
         }
     }
 
