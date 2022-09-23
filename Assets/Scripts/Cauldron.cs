@@ -14,6 +14,9 @@ public class Cauldron : MonoBehaviour
     [SerializeField]
     private GameObject cholocateMixVariations;
 
+    [SerializeField] AudioSource plouf;
+
+
     private List<GameObject> ingredientList;
     private GameObject chocolateColor;
     private bool diablotinSpawned;
@@ -28,6 +31,7 @@ public class Cauldron : MonoBehaviour
     public bool Add(GameObject ingredient){
         if (!ingredientList.Contains(ingredient)){
             ingredient.SetActive(false);
+            plouf.PlayOneShot(plouf.clip);
             ingredientList.Add(ingredient);
             if (ingredient.name == "Chocolate")
                 GetComponent<MouseInteraction>().EndGame();
