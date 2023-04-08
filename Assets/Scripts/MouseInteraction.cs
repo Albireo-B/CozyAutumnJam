@@ -148,6 +148,14 @@ public class MouseInteraction : MonoBehaviour
         GetComponent<Cauldron>().DisplayChocolate("Chocolate");
         character.transform.GetChild(0).gameObject.SetActive(false);
         character.transform.GetChild(1).gameObject.SetActive(true);
+        if (GetComponent<Cauldron>().AllAnimalsFound())
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else
+        {
+            transform.GetChild(1).gameObject.SetActive(true);
+        }
         gameEnded = true;
 
     }

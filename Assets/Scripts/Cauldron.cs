@@ -23,12 +23,14 @@ public class Cauldron : MonoBehaviour
     private List<GameObject> ingredientList;
     private GameObject chocolateColor;
     private bool diablotinSpawned;
+    private int animalCount;
 
     // Start is called before the first frame update
     void Start()
     {
         diablotinSpawned = false;
         ingredientList = new List<GameObject>();
+        animalCount = 0;
     }
 
     public bool Add(GameObject ingredient){
@@ -91,7 +93,8 @@ public class Cauldron : MonoBehaviour
             //TODO ADD ANIMATION OF ANIMAL ALREADY THERE
             Debug.Log("Animal already here !");
         } else {
-            
+            animalCount++;
+            Debug.Log("Animal spawned ! " + animalCount);
             animalToSpawn.SetActive(true);
             GameObject tempPuffAnimation = Instantiate(puffAnimation, animalToSpawn.transform);
             puff.PlayOneShot(puff.clip);
@@ -133,5 +136,10 @@ public class Cauldron : MonoBehaviour
 
     public GameObject GetChocolate(){
         return chocolate;
+    }
+
+    public bool AllAnimalsFound()
+    {
+        return animalCount == animalList.Count;
     }
 }
